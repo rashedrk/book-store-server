@@ -23,10 +23,17 @@ const getAllBooks = async (search: string, options: any) => {
         Book.countDocuments(query)
     ]);
 
+    const totalPage = Math.ceil(totalBooks / limit);
+
 
     return {
         result: books,
-        total: totalBooks,
+        meta: {
+            total: totalBooks,
+            page,
+            limit,
+            totalPage
+        }
     };
 };
 
