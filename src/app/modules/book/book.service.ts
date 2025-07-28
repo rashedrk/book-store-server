@@ -1,6 +1,6 @@
 import Book from "./book.model";
 
-const getAllBooks = async (search: string, options: any) => {
+const getAllBooks = async (search: string, options: {page: number, limit: number}) => {
     const { page, limit } = options;
     const skip = (page - 1) * limit;
     let query: any = {};

@@ -4,15 +4,11 @@ import { BookService } from './book.service';
 // Get all books with pagination and search
 const getAllBooks = async (req: Request, res: Response) => {
     try {
-        const {
-            page = 1,
-            limit = 10,
-            search
-        } = req.query;
+        const { page , limit, search} = req.query;
 
         const options = {
-            page: parseInt(page as string),
-            limit: Math.min(parseInt(limit as string), 100),
+            page: parseInt(page as string) || 1,
+            limit: parseInt(limit as string) || 10,
         };
 
         const result = await BookService.getAllBooks(search as string, options);
