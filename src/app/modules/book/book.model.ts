@@ -149,8 +149,6 @@ const BookSchema: Schema = new Schema({
 });
 
 BookSchema.index({ title: 'text', description: 'text' });
-BookSchema.index({ 'authors.author_id': 1 });
-
 
 const Book = mongoose.model<IBook>('books', BookSchema);
 
