@@ -7,10 +7,7 @@ const getAllBooks = async (search: string, options: {page: number, limit: number
 
     if (search && search.trim()) {
         query = {
-            $or: [
-                { title: { $regex: search, $options: 'i' } },
-                { description: { $regex: search, $options: 'i' } },
-            ]
+            $text: { $search: search }
         }
     }
 

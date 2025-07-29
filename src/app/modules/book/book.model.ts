@@ -13,18 +13,8 @@ const AuthorSchema = new Schema({
     }
 });
 
-const PopularShelfSchema = new Schema({
-    count: {
-        type: String,
-        required: true
-    },
-    name: {
-        type: String,
-        required: true,
-    }
-});
 
-const BookSchema: Schema = new Schema({
+const BookSchema: Schema<IBook> = new Schema({
     book_id: {
         type: String,
         required: true,
@@ -42,11 +32,6 @@ const BookSchema: Schema = new Schema({
         index: true,
         text: true
     },
-    title_without_series: {
-        type: String,
-        required: true,
-        text: true
-    },
     isbn: {
         type: String,
         required: true,
@@ -56,11 +41,6 @@ const BookSchema: Schema = new Schema({
         type: String,
         required: true,
         unique: true,
-        index: true
-    },
-    asin: {
-        type: String,
-        default: "",
         index: true
     },
     kindle_asin: {
@@ -103,37 +83,10 @@ const BookSchema: Schema = new Schema({
         type: String,
         default: "",
     },
-    language_code: {
-        type: String,
-        default: "",
-    },
-    country_code: {
-        type: String,
-        default: "",
-    },
-    is_ebook: {
-        type: String,
-        required: true,
-    },
     average_rating: {
         type: String,
         required: true,
     },
-    ratings_count: {
-        type: String,
-        required: true,
-    },
-    text_reviews_count: {
-        type: String,
-        required: true
-    },
-    popular_shelves: [PopularShelfSchema],
-    series: [{
-        type: String,
-    }],
-    similar_books: [{
-        type: String,
-    }],
     url: {
         type: String,
         required: true
